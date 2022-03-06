@@ -1,5 +1,7 @@
 package com.liberandum.Entities;
 
+import java.util.Collection;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,6 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -28,7 +31,10 @@ public class Perfil {
 
     @JoinColumn(name="T_CATEGORIA_id_categoria")
     @ManyToOne
-    private Categoria categoria;
+    private Categoria categoria = null;
+
+    @OneToMany(mappedBy="perfil")
+    private Collection<Evento> eventos = null;
 
     public Perfil() {}
 
