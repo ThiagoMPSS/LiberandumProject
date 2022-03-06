@@ -25,9 +25,11 @@
 
     <!-- Database -->
     <dependency>
-      <groupId>com.h2database</groupId>
-      <artifactId>h2</artifactId>
-      <version>1.4.199</version>
+      <groupId>oracle</groupId>
+      <artifactId>jdbc-oracle</artifactId>
+      <version>12</version>
+      <scope>system</scope>
+      <systemPath>C:\ojdbc8.jar</systemPath>
     </dependency>
 
   </dependencies>

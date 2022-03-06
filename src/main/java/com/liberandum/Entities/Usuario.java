@@ -47,7 +47,7 @@ public class Usuario {
     private int nr_contato = 0;
 
     @OneToMany(mappedBy="usuario")
-    private Collection<String> usuarios = null;
+    private Collection<Perfil> usuarios = null;
 
     public Usuario() {}
 
@@ -62,7 +62,7 @@ public class Usuario {
     }
 
     public Usuario(int id, String email, String senha, Calendar dt_nasc,
-                    SexoEnum sexo, int nr_contato, Collection<String> usuarios) {
+                    SexoEnum sexo, int nr_contato, Collection<Perfil> usuarios) {
         this(id, email, senha, dt_nasc, sexo, nr_contato);
         this.usuarios = usuarios;
     }
@@ -115,7 +115,7 @@ public class Usuario {
         this.nr_contato = nr_contato;
     }
 
-    public Collection<String> getUsuarios() {
+    public Collection<Perfil> getUsuarios() {
         return usuarios;
     }
 
