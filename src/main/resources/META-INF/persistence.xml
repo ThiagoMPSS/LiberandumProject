@@ -9,7 +9,7 @@
         <class>com.liberandum.Entities.Perfil</class>
         <class>com.liberandum.Entities.Categoria</class>
         <class>com.liberandum.Entities.Evento</class>
-        <class>com.liberandum.Entities.Nescessidade</class>
+        <class>com.liberandum.Entities.Necessidade</class>
         <!-- <exclude-unlisted-classes>true</exclude-unlisted-classes> -->
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect"/>

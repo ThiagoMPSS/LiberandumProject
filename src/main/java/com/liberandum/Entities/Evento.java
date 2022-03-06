@@ -41,7 +41,76 @@ public class Evento {
     private Perfil perfil = null;
 
     @ManyToOne
-    @JoinColumn(name="T_NESCESSIDADE_id_nescessidade", nullable=false)
-    private Nescessidade nescessidade = null;
+    @JoinColumn(name="T_NECESSIDADE_id_necessidade", nullable=false)
+    private Necessidade necessidade = null;
+
+    public Evento() {}
+
+    public Evento(String tipo, Calendar data, GeoCoord coords) {
+        this.tipo = tipo;
+        this.data = data;
+        this.latitude = coords.getLatitude();
+        this.longitude = coords.getLongitude();
+    }
+
+    public Evento(String tipo, Calendar data, GeoCoord coords, Perfil perfil, Necessidade necessidade) {
+        this(tipo, data, coords);
+        this.perfil = perfil;
+        this.necessidade = necessidade;
+    }
+    
+    public int getId() {
+        return id;
+    }
+    
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public String getTipo() {
+        return tipo;
+    }
+    
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+    
+    public Calendar getData() {
+        return data;
+    }
+    
+    public void setData(Calendar data) {
+        this.data = data;
+    }
+    
+    public GeoCoord getCoords() {
+        return new GeoCoord(latitude, longitude);
+    }
+
+    public void setCoords(GeoCoord coords) {
+        this.latitude = coords.getLatitude();
+        this.longitude = coords.getLongitude();
+    }
+
+    public void setCoords(float latitude, float longitude) {
+        this.latitude = latitude;
+        this.longitude = longitude;
+    }
+    
+    public Perfil getPerfil() {
+        return perfil;
+    }
+    
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
+    }
+    
+    public Necessidade getNecessidade() {
+        return necessidade;
+    }
+    
+    public void setNecessidade(Necessidade necessidade) {
+        this.necessidade = necessidade;
+    }
 
 }

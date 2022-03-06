@@ -4,8 +4,6 @@ public class GeoCoord {
     private float latitude = 0;
     private float longitude = 0;
 
-    public GeoCoord() {}
-
     public GeoCoord(float latitude, float longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
