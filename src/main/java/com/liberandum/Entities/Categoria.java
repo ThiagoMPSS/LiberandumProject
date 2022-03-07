@@ -49,4 +49,9 @@ public class Categoria extends EntityDefault {
         this.nome = nome;
     }
 
+    @Override
+    public String toString() {
+        return "Categoria [id=" + id + ", nome=" + nome + ", perfisLength=" + perfis.size() + "]";
+    }
+
 }

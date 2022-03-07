@@ -25,4 +25,9 @@ public class GeoCoord {
         this.longitude = longitude;
     }
 
+    @Override
+    public String toString() {
+        return "GeoCoord [latitude=" + latitude + ", longitude=" + longitude + "]";
+    }
+
 }

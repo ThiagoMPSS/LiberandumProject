@@ -1,14 +1,12 @@
-package com.liberandum;
+package com.liberandum.Tests;
 
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Locale;
 
 import com.liberandum.Configs.DbConn;
 import com.liberandum.Entities.Categoria;
-import com.liberandum.Entities.EntityDefault;
 import com.liberandum.Entities.Evento;
 import com.liberandum.Entities.GeoCoord;
 import com.liberandum.Entities.Necessidade;
@@ -16,7 +14,7 @@ import com.liberandum.Entities.Perfil;
 import com.liberandum.Entities.Usuario;
 import com.liberandum.Entities.Enums.SexoEnum;
 
-public class Application {
+public class InsertTest {
 
     static DbConn db;
 
@@ -33,7 +31,7 @@ public class Application {
         user.add();
 
         Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy mm dd");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy MM dd");
         try {
             cal.setTime(sdf.parse("2022 02 02"));
         } catch (ParseException e) {

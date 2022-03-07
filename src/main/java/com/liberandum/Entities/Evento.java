@@ -1,5 +1,6 @@
 package com.liberandum.Entities;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import javax.persistence.CascadeType;
@@ -112,6 +113,12 @@ public class Evento extends EntityDefault {
     
     public void setNecessidade(Necessidade necessidade) {
         this.necessidade = necessidade;
+    }
+
+    @Override
+    public String toString() {
+        return "Evento [data=" + new SimpleDateFormat("dd/MM/yyyy").format(data.getTime()) + ", id=" + id + ", coords=" + getCoords()
+                + ", necessidade=" + necessidade.getTipo() + ", perfil=" + perfil.getId() + ", tipo=" + tipo + "]";
     }
 
 }

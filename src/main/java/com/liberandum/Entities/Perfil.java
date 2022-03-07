@@ -34,7 +34,7 @@ public class Perfil extends EntityDefault {
     @ManyToOne(cascade=CascadeType.PERSIST)
     private Categoria categoria = null;
 
-    @OneToMany(mappedBy="perfil", cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy="perfil", cascade=CascadeType.PERSIST, orphanRemoval=true)
     private Collection<Evento> eventos = null;
 
     public Perfil() {}
@@ -71,6 +71,12 @@ public class Perfil extends EntityDefault {
 
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "Perfil [categoria=" + categoria + ", eventos=" + eventos + ", id=" + id + ", nome=" + nome
+                + ", usuario=" + usuario.getId() + "]";
     }
 
 }

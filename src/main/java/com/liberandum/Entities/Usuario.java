@@ -1,5 +1,6 @@
 package com.liberandum.Entities;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
@@ -48,7 +49,7 @@ public class Usuario extends EntityDefault {
     @Column(name="nrcontato_user", length=20, nullable=false)
     private String nr_contato = "";
 
-    @OneToMany(mappedBy="usuario", cascade=CascadeType.PERSIST)
+    @OneToMany(mappedBy="usuario", cascade=CascadeType.PERSIST, orphanRemoval=true)
     private Collection<Perfil> perfis = null;
 
     public Usuario() {}
@@ -132,6 +133,12 @@ public class Usuario extends EntityDefault {
 
     public void removePerfil(int index) {
         this.perfis.remove(this.perfis.toArray()[index]);
+    }
+
+    @Override
+    public String toString() {
+        return "Usuario [dt_nasc=" + new SimpleDateFormat("dd/MM/yyyy").format(dt_nasc.getTime()) + ", email=" + email + ", id=" + id + ", nr_contato=" + nr_contato
+                + ", perfis=" + perfis + ", senha=" + senha + ", sexo=" + sexo + "]";
     }
 
 }

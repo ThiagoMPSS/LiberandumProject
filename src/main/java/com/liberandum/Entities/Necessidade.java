@@ -62,4 +62,9 @@ public class Necessidade extends EntityDefault {
         this.eventos = eventos;
     }
 
+    @Override
+    public String toString() {
+        return "Necessidade [eventos=" + eventos + ", id=" + id + ", tipo=" + tipo + "]";
+    }
+
 }
