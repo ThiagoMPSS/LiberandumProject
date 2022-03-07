@@ -16,7 +16,7 @@ import javax.persistence.TemporalType;
 
 @Entity
 @Table(name="T_EVENTO")
-public class Evento {
+public class Evento extends EntityDefault {
     @Id
     @SequenceGenerator(name="sq_evento", sequenceName="SQ_T_EVENTO")
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sq_evento")

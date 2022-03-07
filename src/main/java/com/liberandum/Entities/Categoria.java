@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="T_CATEGORIA")
-public class Categoria {
+public class Categoria extends EntityDefault {
     @Id
     @SequenceGenerator(name="sq_categoria", sequenceName="SQ_T_CATEGORIA", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sq_categoria")
@@ -28,8 +28,7 @@ public class Categoria {
 
     public Categoria() {}
 
-    public Categoria(int id, String nome) {
-        this.id = id;
+    public Categoria(String nome) {
         this.nome = nome;
     }
 

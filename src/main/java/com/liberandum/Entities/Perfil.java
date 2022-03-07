@@ -15,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="T_PERFIL")
-public class Perfil {
+public class Perfil extends EntityDefault {
     @Id
     @SequenceGenerator(name="sq_perfil", sequenceName="SQ_T_PERFIL", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sq_perfil")
@@ -38,14 +38,13 @@ public class Perfil {
 
     public Perfil() {}
 
-    public Perfil(int id, String nome, Categoria categoria) {
-        this.id = id;
+    public Perfil(String nome, Categoria categoria) {
         this.nome = nome;
         this.categoria = categoria;
     }
 
-    public Perfil(int id, String nome, Categoria categoria, Usuario usuario) {
-        this(id, nome, categoria);
+    public Perfil(String nome, Categoria categoria, Usuario usuario) {
+        this(nome, categoria);
         this.usuario = usuario;
     }
 

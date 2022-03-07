@@ -13,7 +13,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="T_NECESSIDADE")
-public class Necessidade {
+public class Necessidade extends EntityDefault {
     @Id
     @SequenceGenerator(name="sq_necessidade", sequenceName="SQ_T_NECESSIDADE", allocationSize=1)
     @GeneratedValue(strategy=GenerationType.SEQUENCE, generator="sq_necessidade")
@@ -25,4 +25,40 @@ public class Necessidade {
 
     @OneToMany(mappedBy="necessidade")
     private Collection<Evento> eventos;
+
+    public Necessidade() {}
+
+    public Necessidade(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Necessidade(String tipo, Collection<Evento> eventos) {
+        this(tipo);
+        this.eventos = eventos;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
+    }
+
+    public Collection<Evento> getEventos() {
+        return eventos;
+    }
+
+    public void setEventos(Collection<Evento> eventos) {
+        this.eventos = eventos;
+    }
+
 }

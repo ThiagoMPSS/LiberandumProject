@@ -21,7 +21,7 @@ import com.liberandum.Entities.Enums.SexoEnum;
 
 @Entity
 @Table(name="T_USUARIO")
-public class Usuario {
+public class Usuario extends EntityDefault {
 
     @Id
     @SequenceGenerator(name="sq_usuario", sequenceName="SQ_T_USUARIO", allocationSize=1)
@@ -51,9 +51,8 @@ public class Usuario {
 
     public Usuario() {}
 
-    public Usuario(int id, String email, String senha, Calendar dt_nasc,
+    public Usuario(String email, String senha, Calendar dt_nasc,
                     SexoEnum sexo, int nr_contato) {
-        this.id = id;
         this.email = email;
         this.senha = senha;
         this.dt_nasc = dt_nasc;
@@ -61,9 +60,9 @@ public class Usuario {
         this.nr_contato = nr_contato;
     }
 
-    public Usuario(int id, String email, String senha, Calendar dt_nasc,
+    public Usuario(String email, String senha, Calendar dt_nasc,
                     SexoEnum sexo, int nr_contato, Collection<Perfil> usuarios) {
-        this(id, email, senha, dt_nasc, sexo, nr_contato);
+        this(email, senha, dt_nasc, sexo, nr_contato);
         this.usuarios = usuarios;
     }
 
