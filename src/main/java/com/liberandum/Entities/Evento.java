@@ -2,6 +2,7 @@ package com.liberandum.Entities;
 
 import java.util.Calendar;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -31,16 +32,16 @@ public class Evento extends EntityDefault {
     private Calendar data = null;
 
     @Column(name="latitude_evento", nullable=false)
-    private float latitude = 0;
+    private double latitude = 0;
 
     @Column(name="longitude_evento", nullable=false)
-    private float longitude = 0;
+    private double longitude = 0;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="T_PERFIL_id_perfil", nullable=false)
     private Perfil perfil = null;
 
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     @JoinColumn(name="T_NECESSIDADE_id_necessidade", nullable=false)
     private Necessidade necessidade = null;
 
@@ -92,7 +93,7 @@ public class Evento extends EntityDefault {
         this.longitude = coords.getLongitude();
     }
 
-    public void setCoords(float latitude, float longitude) {
+    public void setCoords(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
     }

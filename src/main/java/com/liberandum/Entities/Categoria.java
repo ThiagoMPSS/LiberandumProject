@@ -2,6 +2,7 @@ package com.liberandum.Entities;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Categoria extends EntityDefault {
     @Column(name="nm_categoria")
     private String nome = "";
 
-    @OneToMany(mappedBy="categoria")
+    @OneToMany(mappedBy="categoria", cascade=CascadeType.PERSIST)
     private Collection<Perfil> perfis;
 
     public Categoria() {}

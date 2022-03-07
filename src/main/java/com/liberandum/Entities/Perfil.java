@@ -2,6 +2,7 @@ package com.liberandum.Entities;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,14 +27,14 @@ public class Perfil extends EntityDefault {
     private String nome = "";
 
     @JoinColumn(name="T_USUARIO_id_user")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Usuario usuario = null;
 
     @JoinColumn(name="T_CATEGORIA_id_categoria")
-    @ManyToOne
+    @ManyToOne(cascade=CascadeType.PERSIST)
     private Categoria categoria = null;
 
-    @OneToMany(mappedBy="perfil")
+    @OneToMany(mappedBy="perfil", cascade=CascadeType.PERSIST)
     private Collection<Evento> eventos = null;
 
     public Perfil() {}

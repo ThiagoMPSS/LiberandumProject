@@ -2,6 +2,7 @@ package com.liberandum.Entities;
 
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,7 +24,7 @@ public class Necessidade extends EntityDefault {
     @Column(name="tp_necessidade", length=60, nullable=false)
     private String tipo = "";
 
-    @OneToMany(mappedBy="necessidade")
+    @OneToMany(mappedBy="necessidade", cascade=CascadeType.PERSIST)
     private Collection<Evento> eventos;
 
     public Necessidade() {}

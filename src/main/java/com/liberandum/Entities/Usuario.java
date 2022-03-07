@@ -1,8 +1,10 @@
 package com.liberandum.Entities;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -44,15 +46,15 @@ public class Usuario extends EntityDefault {
     private SexoEnum sexo = null;
 
     @Column(name="nrcontato_user", length=20, nullable=false)
-    private int nr_contato = 0;
+    private String nr_contato = "";
 
-    @OneToMany(mappedBy="usuario")
-    private Collection<Perfil> usuarios = null;
+    @OneToMany(mappedBy="usuario", cascade=CascadeType.PERSIST)
+    private Collection<Perfil> perfis = null;
 
     public Usuario() {}
 
     public Usuario(String email, String senha, Calendar dt_nasc,
-                    SexoEnum sexo, int nr_contato) {
+                    SexoEnum sexo, String nr_contato) {
         this.email = email;
         this.senha = senha;
         this.dt_nasc = dt_nasc;
@@ -61,9 +63,9 @@ public class Usuario extends EntityDefault {
     }
 
     public Usuario(String email, String senha, Calendar dt_nasc,
-                    SexoEnum sexo, int nr_contato, Collection<Perfil> usuarios) {
+                    SexoEnum sexo, String nr_contato, Collection<Perfil> perfis) {
         this(email, senha, dt_nasc, sexo, nr_contato);
-        this.usuarios = usuarios;
+        this.perfis = perfis;
     }
 
     public int getId() {
@@ -106,16 +108,30 @@ public class Usuario extends EntityDefault {
         this.sexo = sexo;
     }
 
-    public int getNr_contato() {
+    public String getNr_contato() {
         return nr_contato;
     }
 
-    public void setNr_contato(int nr_contato) {
+    public void setNr_contato(String nr_contato) {
         this.nr_contato = nr_contato;
     }
 
-    public Collection<Perfil> getUsuarios() {
-        return usuarios;
+    public Collection<Perfil> getPerfis() {
+        return perfis;
+    }
+
+    public void addPerfil(Perfil perfil) {
+        if (this.perfis == null)
+            this.perfis = new ArrayList<Perfil>();
+        this.perfis.add(perfil);
+    }
+
+    public void removePerfil(Perfil perfil) {
+        this.perfis.remove(perfil);
+    }
+
+    public void removePerfil(int index) {
+        this.perfis.remove(this.perfis.toArray()[index]);
     }
 
 }

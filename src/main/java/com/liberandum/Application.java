@@ -1,10 +1,20 @@
 package com.liberandum;
 
 import java.sql.SQLException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
 
 import com.liberandum.Configs.DbConn;
+import com.liberandum.Entities.Categoria;
 import com.liberandum.Entities.EntityDefault;
+import com.liberandum.Entities.Evento;
+import com.liberandum.Entities.GeoCoord;
 import com.liberandum.Entities.Necessidade;
+import com.liberandum.Entities.Perfil;
+import com.liberandum.Entities.Usuario;
+import com.liberandum.Entities.Enums.SexoEnum;
 
 public class Application {
 
@@ -13,13 +23,24 @@ public class Application {
     public static void main(String[] args) throws SQLException {
         startDatabase();
 
-        Necessidade n = new Necessidade("Teste");
-        n.add();
-        System.out.println(((Necessidade) EntityDefault.find(Necessidade.class, 1)).getTipo());
-        n.setTipo("Testando");
-        n.update();
-        System.out.println(((Necessidade) EntityDefault.find(Necessidade.class, 1)).getTipo());
-        EntityDefault.find(Necessidade.class, 1).remove();
+        Usuario user = new Usuario("teste@teste.com", "naoseiasenha", Calendar.getInstance(), SexoEnum.M, "15981257863");
+        
+        Perfil perfil = new Perfil("Thiago", new Categoria("teste1"), user);
+        Perfil perfil2 = new Perfil("Teste", new Categoria("teste2"), user);
+        user.addPerfil(perfil);
+        user.addPerfil(perfil2);
+        
+        user.add();
+
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy mm dd");
+        try {
+            cal.setTime(sdf.parse("2022 02 02"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        Evento evento = new Evento("Resgate", cal, new GeoCoord(-23.556593173791384, -46.68648584437965), perfil, new Necessidade("testeNecessidade"));
+        evento.add();
 
         DbConn.getInstance().close();
     }
