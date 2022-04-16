@@ -49,30 +49,6 @@ namespace WebApplication3.Models {
             this.Necessidade = Necessidade;
         }
 
-        public int getId() {
-            return this.Id;
-        }
-
-        public void setId(int Id) {
-            this.Id = Id;
-        }
-
-        public string getTipo() {
-            return this.Tipo;
-        }
-
-        public void setTipo(string Tipo) {
-            this.Tipo = Tipo;
-        }
-
-        public DateTime? getDataHora() {
-            return this.DataHora;
-        }
-
-        public void setDataHora(DateTime Data) {
-            this.DataHora = Data;
-        }
-
         public GeoCoord getCoords() {
             return new GeoCoord(this.Latitude, this.Longitude);
         }
@@ -80,27 +56,6 @@ namespace WebApplication3.Models {
         public void setCoords(GeoCoord Coords) {
             this.Latitude = Coords.Latitude;
             this.Longitude = Coords.Longitude;
-        }
-
-        public void setCoords(double Latitude, double Longitude) {
-            this.Latitude = Latitude;
-            this.Longitude = Longitude;
-        }
-
-        public Perfil? getPerfil() {
-            return this.Perfil;
-        }
-
-        public void setPerfil(Perfil Perfil) {
-            this.Perfil = Perfil;
-        }
-
-        public Necessidade? getNecessidade() {
-            return this.Necessidade;
-        }
-
-        public void setNecessidade(Necessidade Necessidade) {
-            this.Necessidade = Necessidade;
         }
 
         public override string ToString() {

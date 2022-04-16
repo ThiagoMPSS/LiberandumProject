@@ -32,7 +32,6 @@ namespace LiberandumAPI.Db.Context {
             modelBuilder.Entity<Perfil>().Navigation(p => p.Categoria).AutoInclude();
 
             modelBuilder.Entity<Evento>().HasOne(e => e.Perfil).WithMany(p => p.Eventos);
-            modelBuilder.Entity<Evento>().Navigation(e => e.Perfil).AutoInclude();
             modelBuilder.Entity<Evento>().HasOne(e => e.Necessidade).WithMany(n => n.Eventos);
             modelBuilder.Entity<Evento>().Navigation(e => e.Necessidade).AutoInclude();
 

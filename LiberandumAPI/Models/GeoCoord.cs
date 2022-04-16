@@ -10,7 +10,7 @@
             this.Longitude = Longitude;
         }
 
-        public string toString() {
+        public override string ToString() {
             return $"GeoCoord [latitude={Latitude}, longitude={Longitude}]";
         }
     }

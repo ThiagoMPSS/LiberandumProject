@@ -5,129 +5,69 @@ using WebApplication3.Models;
 namespace LiberandumAPI.Controllers {
 
     [ApiController, Route("api/[controller]")]
-    public class CadastroController : ControllerBase {
+    public class CadastroController : DefaultCadastroController {
 
         //Perfil
         [HttpPost, Route("Perfil")]
         public IActionResult CriarPerfil(Perfil perfil) {
-            var db = DatabaseContext.Instance;
-            try {
-                db.Perfil?.Add(perfil);
-                db.SaveChanges();
-
-                return Ok();
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            } finally {
-                db.ChangeTracker.Clear();
-            }
+            return Criar(perfil);
         }
 
         [HttpGet, Route("Perfil")]
         public IActionResult GetPerfil(int id) {
-            var db = DatabaseContext.Instance;
-            try {
-                return Ok(db.Perfil?.Find(id));
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            }
+            return Get<Perfil>(id);
         }
 
         [HttpPut, Route("Perfil")]
         public IActionResult AlterarPerfil(Perfil perfil) {
-            var db = DatabaseContext.Instance;
-            try {
-                db.Update(perfil);
-                db.SaveChanges();
+            return Alterar(perfil);
+        }
 
-                return Ok();
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            } finally {
-                db.ChangeTracker.Clear();
-            }
+        [HttpDelete, Route("Perfil")]
+        public IActionResult DeletarPerfil(int id) {
+            return Deletar<Perfil>(id);
         }
 
         //Usuario
         [HttpPost, Route("Usuario")]
         public IActionResult CriarUsuario(Usuario usuario) {
-            var db = DatabaseContext.Instance;
-            try {
-                db.Usuario?.Add(usuario);
-                db.SaveChanges();
-
-                return Ok();
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            } finally {
-                db.ChangeTracker.Clear();
-            }
+            return Criar(usuario);
         }
 
         [HttpGet, Route("Usuario")]
         public IActionResult GetUsuario(int id) {
-            var db = DatabaseContext.Instance;
-            try {
-                return Ok(db.Usuario?.Find(id));
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            }
+            return Get<Usuario>(id);
         }
 
         [HttpPut, Route("Usuario")]
         public IActionResult AlterarUsuario(Usuario usuario) {
-            var db = DatabaseContext.Instance;
-            try {
-                db.Update(usuario);
-                db.SaveChanges();
+            return AlterarUsuario(usuario);
+        }
 
-                return Ok();
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            } finally {
-                db.ChangeTracker.Clear();
-            }
+        [HttpDelete, Route("Usuario")]
+        public IActionResult DeletarUsuario(int id) {
+            return Deletar<Usuario>(id);
         }
 
         //Categoria
         [HttpPost, Route("Categoria")]
         public IActionResult CriarCategoria(Categoria categoria) {
-            var db = DatabaseContext.Instance;
-            try {
-                db.Categoria?.Add(categoria);
-                db.SaveChanges();
-
-                return Ok();
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            } finally {
-                db.ChangeTracker.Clear();
-            }
+            return Criar(categoria);
         }
 
         [HttpGet, Route("Categoria")]
-        public IActionResult GetCategoria(int id) {
-            var db = DatabaseContext.Instance;
-            try {
-                return Ok(db.Categoria?.Find(id));
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            }
+        public IActionResult GetCategoria(int id = -1) {
+            return Get<Categoria>(id);
         }
 
         [HttpPut, Route("Categoria")]
         public IActionResult AlterarCategoria(Categoria categoria) {
-            var db = DatabaseContext.Instance;
-            try {
-                db.Update(categoria);
-                db.SaveChanges();
+            return Alterar(categoria);
+        }
 
-                return Ok();
-            } catch (Exception ex) {
-                return BadRequest(ex.Message);
-            } finally {
-                db.ChangeTracker.Clear();
-            }
+        [HttpDelete, Route("Categoria")]
+        public IActionResult DeletarCategoria(int id) {
+            return Deletar<Categoria>(id);
         }
 
     }
