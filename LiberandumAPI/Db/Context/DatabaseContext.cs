@@ -4,14 +4,7 @@ using WebApplication3.Models;
 
 namespace LiberandumAPI.Db.Context {
     public class DatabaseContext : DbContext {
-        private static DatabaseContext? _Instance = null;
-        public static DatabaseContext Instance {
-            get {
-                if (_Instance == null)
-                    _Instance = new DatabaseContext();
-                return _Instance;
-            }
-        }
+        public readonly static DatabaseContext Instance = new DatabaseContext();
 
         private DatabaseContext() { }
 
@@ -19,7 +12,7 @@ namespace LiberandumAPI.Db.Context {
             base.OnConfiguring(optionsBuilder);
             if (!optionsBuilder.IsConfigured) {
                 var config = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json").Build();
-                optionsBuilder.UseOracle(config.GetConnectionString("SmartConnection"));
+                optionsBuilder.UseOracle(config.GetConnectionString("FIAPConnection"));
             }
         }
 
