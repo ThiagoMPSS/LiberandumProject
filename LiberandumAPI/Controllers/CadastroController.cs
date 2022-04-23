@@ -41,7 +41,7 @@ namespace LiberandumAPI.Controllers {
 
         [HttpPut, Route("Usuario")]
         public IActionResult AlterarUsuario(Usuario usuario) {
-            return AlterarUsuario(usuario);
+            return Alterar(usuario);
         }
 
         [HttpDelete, Route("Usuario")]
@@ -57,7 +57,14 @@ namespace LiberandumAPI.Controllers {
 
         [HttpGet, Route("Categoria")]
         public IActionResult GetCategoria(int id = -1) {
-            return Get<Categoria>(id);
+            if (id > -1)
+                return Get<Categoria>(id);
+            else
+                try {
+                    return Ok(Db.Categoria?.ToList());
+                } catch (Exception ex) {
+                    return BadRequest(ex);
+                }
         }
 
         [HttpPut, Route("Categoria")]

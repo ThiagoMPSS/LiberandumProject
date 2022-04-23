@@ -14,14 +14,13 @@ namespace LiberandumAPI.Controllers {
         [NonAction]
         public virtual IActionResult Criar(object obj) {
             try {
+                Db.ChangeTracker.Clear();
                 Db.Add(obj);
                 Db.SaveChanges();
 
                 return Ok();
             } catch (Exception ex) {
                 return BadRequest(ex.Message);
-            } finally {
-                Db.ChangeTracker.Clear();
             }
         }
 
@@ -37,20 +36,20 @@ namespace LiberandumAPI.Controllers {
         [NonAction]
         public virtual IActionResult Alterar(object obj) {
             try {
+                Db.ChangeTracker.Clear();
                 Db.Update(obj);
                 Db.SaveChanges();
 
                 return Ok();
             } catch (Exception ex) {
                 return BadRequest(ex.Message);
-            } finally {
-                Db.ChangeTracker.Clear();
             }
         }
 
         [NonAction]
         public virtual IActionResult Deletar<T>(int id) {
             try {
+                Db.ChangeTracker.Clear();
                 object? obj = Db.Find(typeof(T), id);
                 if (obj != null) {
                     Db.Remove(obj);
@@ -60,8 +59,6 @@ namespace LiberandumAPI.Controllers {
                 return Ok();
             } catch (Exception ex) {
                 return BadRequest(ex.Message);
-            } finally {
-                Db.ChangeTracker.Clear();
             }
         }
 

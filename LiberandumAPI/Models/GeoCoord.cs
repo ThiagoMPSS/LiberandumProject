@@ -1,4 +1,7 @@
-﻿namespace WebApplication3.Models {
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace WebApplication3.Models {
+    [NotMapped]
     public class GeoCoord {
 
         public double Latitude { get; private set; } = 0;

@@ -34,7 +34,7 @@ namespace LiberandumAPI.Db.Context {
             try {
                 var Db = Instance;
 
-                //Db.Database.EnsureDeleted();
+                Db.Database.EnsureDeleted();
                 return Db.Database.EnsureCreated();
             } catch (Exception ex) {
                 Console.WriteLine(ex.Message);

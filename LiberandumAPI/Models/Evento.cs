@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using WebApplication3.Db.Context;
 
 namespace WebApplication3.Models {
@@ -21,13 +22,13 @@ namespace WebApplication3.Models {
         [Required, Column("longitude_evento")]
         public double Longitude { get; set; } = 0;
 
-        [NotMapped]
+        [NotMapped, JsonIgnore]
         public Perfil? Perfil { get; set; } = null;
 
         [Required, Column("id_perfil")]
         public int PerfilId { get; set; } = -1;
 
-        [NotMapped]
+        [NotMapped, JsonIgnore]
         public Necessidade? Necessidade { get; set; } = null;
 
         [Required, Column("id_necessidade")]
